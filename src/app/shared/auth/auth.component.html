@@ -1,11 +1,11 @@
 <div fxLayout="column" fxLayoutAlign="space-between center" *ngIf="afAuth.authState | async; let user; else showAuth">
   <h1 class="mat-typography">Hello {{ user.uid }}!</h1>
+  <p>You are logged in as: {{ userRole | async }}</p>  
   <div *ngIf="showNavPanel" fxLayout="row" fxLayoutAlign="space-evenly">
     <button mat-raised-button color="primary" (click)="showTransactionsComponent=true; showUserRightsComponent=false">Transactions</button>
     <button *ngIf="showUserRightsButton" mat-raised-button color="primary" (click)="showUserRightsComponent=true; showTransactionsComponent=false">User Rights</button>
     <button mat-raised-button color="warn" (click)="logout()">Logout</button>
   </div>
-  <p>User role: {{ userRole | async }}</p>
 </div>
 
 <!-- SignIn / SignUp buttons -->

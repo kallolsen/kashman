@@ -1,3 +1,52 @@
-<p>
-  user-rights works!
-</p>
+
+<div fxLayout="column" fxLayoutAlign="space-evenly">
+
+  <mat-form-field>
+    <mat-select placeholder="Select User">
+      <mat-option *ngFor="let user of users | async" [value]="user.phone">
+        {{ user.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <mat-select placeholder="Base POC">
+      <mat-option *ngFor="let poc of pocs" [value]="poc">
+        {{ poc }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>  
+
+  <p align="center">TRANASACTIONS ALLOWED</p>
+  <mat-slide-toggle [checked]="stCR">Cash Receipts</mat-slide-toggle>
+  <mat-slide-toggle [checked]="stCP">Cash Payments</mat-slide-toggle>
+  <mat-slide-toggle [checked]="stAR">Advance Receipts</mat-slide-toggle>
+  <mat-slide-toggle [checked]="stAP">Advance Payments</mat-slide-toggle><br>
+
+  <mat-slide-toggle [checked]="stTR" (change)="stTRToggle()">Transfers</mat-slide-toggle>
+
+  <mat-expansion-panel *ngIf="showTrPOCList">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Transferee POCs
+      </mat-panel-title>
+      <mat-panel-description>
+        Select POCs permitted for Transfers
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <ul *ngFor="let poc of pocs; let i = index" style="list-style: none;">
+      <li>
+        <mat-checkbox [checked]="selectedPOC[i]" (change)="clickedPOC(i)" >{{ poc }}</mat-checkbox>
+      </li>
+    </ul>
+    <div fxLayout="row" fxLayoutAlign="space-around">
+      <button mat-raised-button color="accent" (click)="selectAllPOCs()">Select all POCs</button><br>
+      <button mat-raised-button color="warn" (click)="clearPOCList()">Clear selection</button>
+    </div>
+  </mat-expansion-panel>
+    
+  <br><mat-slide-toggle>View Transaction History</mat-slide-toggle><br>
+    
+  <button mat-raised-button (click)="showSelectedPOCs()">Submit</button>
+    
+</div>
