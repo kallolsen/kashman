@@ -2,8 +2,9 @@
   <h1 class="mat-typography">Hello {{ user.uid }}!</h1>
   <p>You are logged in as: {{ userRole | async }}</p>  
   <div *ngIf="showNavPanel" fxLayout="row" fxLayoutAlign="space-evenly">
-    <button mat-raised-button color="primary" (click)="showTransactionsComponent=true; showUserRightsComponent=false">Transactions</button>
-    <button *ngIf="showUserRightsButton" mat-raised-button color="primary" (click)="showUserRightsComponent=true; showTransactionsComponent=false">User Rights</button>
+    <button mat-raised-button color="primary" (click)="showTransactionsComponent=true; showUserRightsComponent=false; showAccountsComponent=false">Transactions</button>
+    <button *ngIf="showUserRightsButton" mat-raised-button color="primary" (click)="showUserRightsComponent=true; showTransactionsComponent=false; showAccountsComponent=false">User Rights</button>
+    <button mat-raised-button color="primary" (click)="showAccountsComponent=true; showTransactionsComponent=false; showUserRightsComponent=false">Accounts</button>
     <button mat-raised-button color="warn" (click)="logout()">Logout</button>
   </div>
 </div>

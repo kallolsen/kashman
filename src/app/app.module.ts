@@ -9,6 +9,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { MomentModule } from 'angular2-moment';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatCheckboxModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatListModule, MatSlideToggleModule, MatExpansionModule } from '@angular/material';
 
@@ -56,6 +57,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     BrowserAnimationsModule,
+    MomentModule,
     FlexLayoutModule,
     MatCheckboxModule,
     MatButtonModule,

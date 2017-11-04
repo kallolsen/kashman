@@ -23,6 +23,7 @@ export class AuthComponent implements OnInit {
   showUserRightsButton: boolean = false;
   showTransactionsComponent: boolean = false;
   showUserRightsComponent: boolean = false;
+  showAccountsComponent: boolean = false;
 
   name: string;
   phone: string;
@@ -96,7 +97,7 @@ export class AuthComponent implements OnInit {
   private createUserProfile(nuserid: string) {
     const path = 'users/' + nuserid;
     const rolepath = path + 'role';
-    const tProfile = { name: this.name, phone: this.phone, role: 'user', defaultPoc: this.selectedPoc };
+    const tProfile = { name: this.name, phone: this.phone, role: 'user', defaultPoc: this.selectedPoc, uid: nuserid };
     console.log("New user path: " + path);
     //this.userRole = 'user';
     return this.db.object(path).set(tProfile);

@@ -2,26 +2,26 @@
 <div fxLayout="column" fxLayoutAlign="space-evenly">
 
   <mat-form-field>
-    <mat-select placeholder="Select User">
-      <mat-option *ngFor="let user of users | async" [value]="user.phone">
+    <mat-select placeholder="Select User" [(ngModel)]="selectedUser">
+      <mat-option *ngFor="let user of users | async" [value]="user.uid">
         {{ user.name }}
       </mat-option>
     </mat-select>
   </mat-form-field>
   
   <mat-form-field>
-    <mat-select placeholder="Base POC">
-      <mat-option *ngFor="let poc of pocs" [value]="poc">
+    <mat-select placeholder="Base POC" [(ngModel)]="basePOC">
+      <mat-option *ngFor="let poc of allPOCS" [value]="poc" (click)="invalidatePOC(poc)">
         {{ poc }}
       </mat-option>
     </mat-select>
   </mat-form-field>  
 
   <p align="center">TRANASACTIONS ALLOWED</p>
-  <mat-slide-toggle [checked]="stCR">Cash Receipts</mat-slide-toggle>
-  <mat-slide-toggle [checked]="stCP">Cash Payments</mat-slide-toggle>
-  <mat-slide-toggle [checked]="stAR">Advance Receipts</mat-slide-toggle>
-  <mat-slide-toggle [checked]="stAP">Advance Payments</mat-slide-toggle><br>
+  <mat-slide-toggle [(ngModel)]="stCR">Cash Receipts</mat-slide-toggle>
+  <mat-slide-toggle [(ngModel)]="stCP">Cash Payments</mat-slide-toggle>
+  <mat-slide-toggle [(ngModel)]="stAR">Advance Receipts</mat-slide-toggle>
+  <mat-slide-toggle [(ngModel)]="stAP">Advance Payments</mat-slide-toggle><br>
 
   <mat-slide-toggle [checked]="stTR" (change)="stTRToggle()">Transfers</mat-slide-toggle>
 
@@ -45,8 +45,8 @@
     </div>
   </mat-expansion-panel>
     
-  <br><mat-slide-toggle>View Transaction History</mat-slide-toggle><br>
+  <br><mat-slide-toggle [(ngModel)]="stVTH" >View Transaction History</mat-slide-toggle><br>
     
-  <button mat-raised-button (click)="showSelectedPOCs()">Submit</button>
+  <button mat-raised-button (click)="updateRights()">Submit</button>
     
 </div>

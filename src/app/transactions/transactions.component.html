@@ -1,6 +1,6 @@
 <mat-form-field>
-  <mat-select placeholder="Select POC">
-    <mat-option *ngFor="let poc of pocs" [value]="poc.value">
+  <mat-select [(ngModel)]="selectedPOC" placeholder="Select POC">
+    <mat-option *ngFor="let poc of pocs" [value]="poc.value" name='selectedPOC'>
       {{ poc.viewValue }}
     </mat-option>
   </mat-select>
@@ -8,87 +8,77 @@
 <div fxLayout="column" fxLayoutAlign="space-evenly">
   <button mat-raised-button color="primary" (click)="pmtbtnpressed()">Payments</button><br>
   <div *ngIf="pmtpressed" fxLayout="column" >
-    <p>Payment Form Here!</p>
     <mat-form-field>
-      <input matInput placeholder="Payment Made To-">
+      <input matInput [(ngModel)]="pmPayee" placeholder="Payee">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Amount-">
+      <input matInput [(ngModel)]="pmAmount" placeholder="Amount">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Comments-">
+      <input matInput [(ngModel)]="pmComment" placeholder="Comment">
     </mat-form-field>
-    <button mat-raised-button color="secondary" (click)="closeotherforms()">Submit</button><br>
+    <button mat-raised-button color="secondary" (click)="pmtTransaction()">Submit</button><br>
     <button mat-raised-button color="secondary" (click)="closeotherforms()">Cancel</button><br>
   </div>
   <button mat-raised-button color="primary" (click)="recbtnpressed()">Receipts</button><br>
   <div *ngIf="recpressed" fxLayout="column" >
-    <p>Rec Form Here!</p>
     <mat-form-field>
-      <input matInput placeholder="Payment Received From-">
+      <input matInput [(ngModel)]="rcPayer" placeholder="Payer">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Amount-">
+      <input matInput [(ngModel)]="rcAmount" placeholder="Amount">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Comments-">
+      <input matInput [(ngModel)]="rcComment" placeholder="Comment">
     </mat-form-field>
-    <button mat-raised-button color="secondary" (click)="closeotherforms()">Submit</button><br>
+    <button mat-raised-button color="secondary" (click)="recTransaction()">Submit</button><br>
     <button mat-raised-button color="secondary" (click)="closeotherforms()">Cancel</button><br>
     
   </div>
   <button mat-raised-button color="primary" (click)="admbtnpressed()">Advances Made</button><br>
   <div *ngIf="admpressed" fxLayout="column" >
-    <p>Advances Made Form Here!</p>
     <mat-form-field>
-      <input matInput placeholder="Advance Payment Made To-">
+      <input matInput [(ngModel)]="apmPayee" placeholder="Advance Payee">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Amount-">
+      <input matInput [(ngModel)]="apmAmount" placeholder="Advance Amount">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Comments-">
+      <input matInput [(ngModel)]="apmComment" placeholder="Comment">
     </mat-form-field>
-    <button mat-raised-button color="secondary" (click)="closeotherforms()">Submit</button><br>
+    <button mat-raised-button color="secondary" (click)="apmtTransaction()">Submit</button><br>
     <button mat-raised-button color="secondary" (click)="closeotherforms()">Cancel</button><br>
   </div>
   <button mat-raised-button color="primary" (click)="adrbtnpressed()">Advances Received</button><br>
   <div *ngIf="adrpressed" fxLayout="column" >
-    <p>Advances received Form Here!</p>
     <mat-form-field>
-      <input matInput placeholder="Advance Payment Received From-">
+      <input matInput [(ngModel)]="arcPayer" placeholder="Advance Payer">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Amount-">
+      <input matInput [(ngModel)]="arcAmount" placeholder="Advance Amount">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Comments-">
+      <input matInput [(ngModel)]="arcComment" placeholder="Comment">
     </mat-form-field>
-    <button mat-raised-button color="secondary" (click)="closeotherforms()">Submit</button><br>
+    <button mat-raised-button color="secondary" (click)="arecTransaction()">Submit</button><br>
     <button mat-raised-button color="secondary" (click)="closeotherforms()">Cancel</button><br>
   </div>
   <button mat-raised-button color="primary" (click)="trsbtnpressed()">Transfers</button><br>
   <div *ngIf="trspressed" fxLayout="column" >
-    <p>Transfers Form Here!</p>
     <mat-form-field>
-      <mat-select placeholder="Transfer From">
-        <mat-option *ngFor="let poc of pocs" [value]="poc.value">
-          {{ poc.viewValue }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-select placeholder="Transfer To">
+      <mat-select placeholder="Transfer To" [(ngModel)]="transferPOC">
         <mat-option *ngFor="let poc of pocs" [value]="poc.value">
           {{ poc.viewValue }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Amount:">
+      <input matInput [(ngModel)]="transferAmount" placeholder="Transfer Amount">
     </mat-form-field>
-    <button mat-raised-button color="secondary" (click)="closeotherforms()">Submit</button><br>
+    <mat-form-field>
+      <input matInput [(ngModel)]="transferComment" placeholder="Comment">
+    </mat-form-field>
+    <button mat-raised-button color="secondary" (click)="transferTransaction()">Submit</button><br>
     <button mat-raised-button color="secondary" (click)="closeotherforms()">Cancel</button><br>
   </div>
 </div>
